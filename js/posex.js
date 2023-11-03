@@ -11,7 +11,7 @@ async function _import() {
 }
 const { THREE, TrackballControls, DragControls, MeshLine, MeshLineMaterial } = await _import();
 
-const JOINT_RADIUS = 20.0;
+const JOINT_RADIUS = 10.0;
 const LIMB_SIZE = 4.0;
 const LIMB_N = 64;
 
