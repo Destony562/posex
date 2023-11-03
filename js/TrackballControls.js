@@ -32,7 +32,7 @@ class TrackballControls extends EventDispatcher {
 
 		// API
 
-		this.enabled = false;
+		this.enabled = true;
 
 		this.screen = { left: 0, top: 0, width: 0, height: 0 };
 
@@ -52,7 +52,7 @@ class TrackballControls extends EventDispatcher {
 
 		this.keys = [ 'KeyA' /*A*/, 'KeyS' /*S*/, 'KeyD' /*D*/ ];
 
-		this.mouseButtons = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN };
+		this.mouseButtons = { RIGHT: MOUSE.ROTATE, RIGHT: MOUSE.DOLLY, RIGHT: MOUSE.PAN };
 
 		// internals
 
