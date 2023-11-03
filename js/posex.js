@@ -298,10 +298,24 @@ function init_3d(ui) {
         }
     });
 
-    renderer.domElement.addEventListener('pointerdown', e => {
-        dragger_joint.enabled = e.button === 0;
-        dragger_body.enabled = e.button === 2;
-    }, true);
+let lastClickTime = 0;
+const doubleClickDelay = 300; // Время в миллисекундах для считывания двойного нажатия
+
+renderer.domElement.addEventListener('pointerdown', e => {
+    if (e.button === 0) { // Левая кнопка мыши
+        const currentTime = new Date().getTime();
+        if (currentTime - lastClickTime < doubleClickDelay) {
+            // Если прошло меньше времени, чем doubleClickDelay, то это двойной клик
+            dragger_body.enabled = true;
+            dragger_joint.enabled = false;
+        } else {
+            // В противном случае, это первое нажатие, ждем второе
+            lastClickTime = currentTime;
+            dragger_joint.enabled = true;
+            dragger_body.enabled = false;
+        }
+    }
+}, true);
 
     const rc = new THREE.Raycaster();
     const m = new THREE.Vector2();
