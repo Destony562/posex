@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Posex - Estimated Image Generator for Pose2Image</title>
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <link rel="stylesheet" href="css/main.css">
+  <script async src="js/es-module-shims.js"></script>
+  <script type="importmap">
+      {
+        "imports": {
+          "three": "./js/three.module.js",
+          "three-trackballcontrols": "./js/TrackballControls.js",
+          "three-dragcontrols": "./js/DragControls.js",
+          "three-meshline": "./js/THREE.MeshLine.Module.min.js",
+          "posex": "./js/posex.js"
+        }
+      }
+    </script>
+  <script type="esms-options">
+        {
+            "noLoadEventRetriggers": true
+        }
+    </script>
+  <script defer type="module" src="js/app.js"></script>
+</head>
+
+<body>
+  <div id="cont">
+    <div style="display: flex; flex-direction: row; gap: 0 0.5em;">
+      <button id="all_reset" class="box" style="flex: 1 1 0">Сбросить все</button>
+      <button id="reset_camera" class="box" style="flex: 1 1 0">Сбросить камеру</button>
+      <button id="reset_pose" class="box" style="flex: 1 1 0">Сбросить позу</button>
+    </div>
+    <div style="display: flex; flex-direction: row; ">
+      <canvas width="512" height="512" id="main_canvas"></canvas>
+      <div style="margin-left: 1em; display: flex; flex-direction: column; gap: 0.25em; font-size: smaller;">
+        <div>Камера</div>
+        <label><input type="checkbox" id="fixed_roll">3D</label>
+        <div>Тело</div>
+        <button id="add_body" style="width: max-content; min-width: 100%; text-align: left;">Добавить</button>
+        <button id="remove_body" style="width: max-content; min-width: 100%; text-align: left;">Удалить</button>
+        <div>Соотношение холста</div>
+        <select id="canvas_width">
+        <option value="512 512">1:1</option>
+        <option value="430 768">9:16</option>
+        <option value="768 430">16:9</option>
+        <option value="512 768">2:3</option>
+        <option value="768 512">3:2</option>
+        </select>
+        <div>Фон</div>
+        <div style="display: flex; flex-direction: row; gap: 0 1.25em;">
+          <label style="flex: 0 0 0;"><button onclick="document.querySelector('#bg_file').click();">Установить</button><input type="file" id="bg_file" style="display: none;"/></label>
+          <button id="reset_bg" style="flex: 0 0 0;">Удалить</button>
+        </div>    
+        <div id="body_indicator2"></div>
+        <div id="body_indicator1"></div>
+        <div style="display: flex; flex-direction: row; gap: 0 0.25em;">
+          <a id="save_button" class="box" style="flex; flex-direction: column; gap: 2em; font-size: 20px;" href="#">Сохранить изображение</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p id="notation"></p>
+  <div id="notifications"></div>
+</body>
+
+</html>
